@@ -1,0 +1,170 @@
+{#
+	# Layout template
+	# ---------------
+	#
+	# This template defines your site’s global layout. It can be
+	# “extended” by other templates to fill in the gaps.
+	#
+	# See Twig’s Template Inheritance documentation for more details:
+	# http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+	#}
+
+	<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+		<link rel="home" href="{{ siteUrl }}" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/comments-style.css">
+		<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Librarium Inquismunda</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class=""><a href="blog">Blog <span class="sr-only"></span></a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rules<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									{% for entry in craft.entries.section('article').type('gamerules').order('title').find() %}
+									<li class="list-group-item clearfix">
+										<a href="{{ entry.url }}">{{ entry.title }}</a>
+										<!-- {% for pdf in entry.pdf %}
+										-  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+										<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+										{% endfor %} -->
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Warbands<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									{% for entry in craft.entries.section('article').type('warbands').order('title').find() %}
+									<li class="list-group-item clearfix">
+										<a href="{{ entry.url }}">{{ entry.title }}</a>
+										<!-- 									{% for pdf in entry.pdf %}
+										-  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+										<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+										{% endfor %} -->
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Scenarios<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									{% for entry in craft.entries.section('article').type('scenarios').order('title').find() %}
+									<li class="list-group-item clearfix">
+										<a href="{{ entry.url }}">{{ entry.title }}</a>
+										<!-- 									{% for pdf in entry.pdf %}
+										-  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+										<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+										{% endfor %} -->
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Player Aids<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									{% for entry in craft.entries.section('article').type('aide').order('title').find() %}
+									<li class="list-group-item clearfix">
+										<a href="{{ entry.url }}">{{ entry.title }}</a>
+										<!-- 									{% for pdf in entry.pdf %}
+										-  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+										<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+										{% endfor %} -->
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							<!-- <li><a href="forum">Forum</a></li> -->
+							<li><a href="About">About</a></li>
+						</ul>
+						<!-- <form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form> -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="admin">Login</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+</div>
+
+<div id="container" class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{ siteName }}</h1>
+		</div>
+	</div>
+
+<main id="content" role="main">
+	{% block content %}
+	<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+	<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+	{% endblock %}
+</main>
+
+<div class="row">
+	<p class="quote" id="thoughtOfTheDay"></p>
+	<p class="source" id="numberThoughtOfTheDay"></p>
+</div>
+
+</div>
+<footer id="footer" class="footer">
+	&copy; {{ now.year }} {{ siteName | ucfirst }}.
+	<p class="footer-text">Librarium Inquisimunda is an independent website, not associated with Games Workshop in any way. The <i>rules</i> and <i>warbands</i>, as most of the <i>scenarios</i> are copyrighted Games Workshop, or other organisations or individuals.</p>
+	<!-- <div class="fb">
+	<div class="fb-like pull-right" data-href="http://inquisimunda.evinwijninga.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+</div> -->
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/comments-ajax.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

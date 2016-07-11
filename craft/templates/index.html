@@ -1,0 +1,113 @@
+{#
+	# Homepage template
+	# ---------------
+	#
+	# When this template gets loaded, it will be because someone has accessed
+	# http://yoursite.com/ (without any URI). Craft checks to see if you have
+	# a Single section set to be the Homepage (as you do, by default), and
+	# loads the section’s Template (this file). A special ‘entry’ variable
+	# will already be set for you, assigned to the Homepage entry.
+	#
+	# It's worth noting that even if you didn't have a Homepage Single section,
+	# as long as this template remains at craft/templates/index.html, it
+	# would still be the one to get loaded when accessing http://yoursite.com/,
+	# albeit without an ‘entry’ variable already set for you.
+	#
+	# See this page for more details on how Craft routes requests:
+	# http://buildwithcraft.com/docs/routing
+	#}
+
+	{% extends "_layout" %}
+
+	{% block content %}
+
+</div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<li data-target="#myCarousel" data-slide-to="3"></li>
+	</ol>
+
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+		<div class="item active">
+			<img src="uploads/Eldar1.png" alt="Slider1.png">
+			<div class="carousel-caption">
+			<!-- <h3 class="quote">Eldar</h3> -->
+<!-- 				<p>Patrick den Drijver's Eldar.</p> -->
+			</div>
+		</div>
+
+		<div class="item">
+			<img src="uploads/IG.png" alt="Slider2.png">
+		</div>
+
+		<div class="item">
+			<img src="uploads/Eldar2.png" alt="Slider2.png">
+		</div>
+
+		<div class="item">
+			<img src="uploads/IG2.png" alt="Slider2.png">
+		</div>
+	</div>
+
+	<!-- Left and right controls -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+<div class="container">
+	<div class="row" style="margin-top: 40px">
+		<div class="col-md-12">
+			<p class="text">
+				{{ entry.body }}
+			</p>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Recent news</h2>
+		</div>
+		{% for entry in craft.entries.section('article').limit(3).find() %}
+		<div class="col-md-4">
+			<article class="text">
+				<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+				{% if image %}
+    {{ image.url }}
+    {# Or alternatively #}
+    {{ image.getUrl() }}
+    {# If you want to get a specific transform: #}
+    {{ image.getUrl('transformHandle') }}
+{% endif %}
+				<p  class="blog-details">Posted {% if entry.poster %}by {{ entry.poster }}{% endif %} on {{ entry.postDate.format('F d, Y') }}</p>
+				<p>{{ entry.body|hacksaw(words='20') }}...</p>
+				<p><a href="{{ entry.url }}">Continue reading</a></p>
+			</article>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="row">
+
+		{% for afbeelding in entry.afbeelding %}
+		{% if afbeelding %}
+		<div class="ordo">
+			<p>Powered by:</p>
+			<a href="https://www.facebook.com/groups/1639413216299694/" target="_blank">
+				<img src="{{ afbeelding.url }}" alt="">
+			</a>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+
+	{% endblock %}

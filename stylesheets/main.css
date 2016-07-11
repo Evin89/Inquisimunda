@@ -1,0 +1,162 @@
+/* line 1, ../sass/main.scss */
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, ../sass/main.scss */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* line 12, ../sass/main.scss */
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 120px !important;
+}
+
+/* line 18, ../sass/main.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 22, ../sass/main.scss */
+.headerImage {
+  text-align: center;
+}
+/* line 25, ../sass/main.scss */
+.headerImage img {
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+  margin: 10px 0;
+}
+
+/* line 33, ../sass/main.scss */
+h1 {
+  font-family: 'Libre Baskerville', serif !important;
+  font-size: 48px  !important;
+  font-weight: 600  !important;
+  font-style: italic;
+}
+
+/* line 39, ../sass/main.scss */
+article img {
+  max-width: 300px;
+  cursor: pointer;
+}
+
+/* line 44, ../sass/main.scss */
+.fb-share-button {
+  margin: 20px 0 !important;
+}
+
+/* line 48, ../sass/main.scss */
+.ordo {
+  text-align: center;
+}
+/* line 51, ../sass/main.scss */
+.ordo img {
+  max-width: 150px;
+}
+
+/* line 70, ../sass/main.scss */
+.layer {
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  z-index: 999;
+  text-align: center;
+}
+/* line 80, ../sass/main.scss */
+.layer img {
+  margin-top: 40px;
+  display: inline-block;
+  max-height: 600px;
+  max-width: 1040px;
+}
+
+/* line 88, ../sass/main.scss */
+.closeLayer {
+  color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* line 98, ../sass/main.scss */
+h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+/* line 104, ../sass/main.scss */
+h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+}
+
+/* line 111, ../sass/main.scss */
+.blog-details {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-size: 18px;
+  color: #666666;
+  /*text-align: center;*/
+  font-weight: 300;
+}
+
+/* line 119, ../sass/main.scss */
+.text {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-size: 20px;
+  color: #666666;
+  /*text-align: center;*/
+  font-weight: 300;
+}
+
+/* line 127, ../sass/main.scss */
+.quote {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #999999;
+  font-style: italic;
+  text-align: center;
+}
+
+/* line 136, ../sass/main.scss */
+.source {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 20px;
+  color: #666666;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* line 145, ../sass/main.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 149, ../sass/main.scss */
+footer {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #E7E7E7;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

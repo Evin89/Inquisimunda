@@ -1,0 +1,34 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+<h1>{{ entry.title }}</h1>
+
+{{ entry.body }}
+
+<h2>Rules</h2>
+<ul class="list-group">
+	{% for entry in craft.entries.section('article').type('gamerules').order('title').find() %}
+	<li class="list-group-item clearfix">
+		<a href="{{ entry.url }}">{{ entry.title }}</a>
+		{% for pdf in entry.pdf %}
+		  -  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+		<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+		{% endfor %}
+	</li>
+	{% endfor %}
+</ul>
+
+<h2>Warbands</h2>
+<ul class="list-group">
+	{% for entry in craft.entries.section('article').type('warbands').order('title').find() %}
+	<li class="list-group-item clearfix">
+		<a href="{{ entry.url }}">{{ entry.title }}</a>
+		{% for pdf in entry.pdf %}
+		  -  {{ (pdf.size/1000000)|round(1, 'floor')}}MB
+		<a href="/{{pdf.url}}" target="_blank" class="pull-right" download="{{ pdf.title }}.pdf"><button class="btn btn-primary">Direct download</button></a>
+		{% endfor %}
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

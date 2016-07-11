@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+   <project name="Galleryoots" default="info" basedir=".">
+   
+   		<target name="info" depends="phpcs" >
+      		<echo>Galleryoots - Craft CMS Plugin</echo>
+   		</target>
+
+  		<property environment="env"/>
+   <!--  PHP CodeSniffer -->
+  		<target name="phpcs"
+			description="Find coding standard violations using PHP_CodeSniffer">
+			<exec executable="/Users/silvanus/pear/share/pear/phpcs" output="/dev/null">
+				<arg value="--report=checkstyle" />
+				<arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+				<arg value="--standard=${basedir}/build/phpcs.xml" />
+				<arg path="${basedir}/src" />
+			</exec>
+		</target>
+
+  </project>

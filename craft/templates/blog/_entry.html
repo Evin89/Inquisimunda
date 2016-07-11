@@ -1,0 +1,52 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<article class="col-lg-12">
+		<h2>{{ entry.title }}</h2>
+		<p>Posted {% if entry.poster %}by {{ entry.poster }}{% endif %} on {{ entry.postDate.format('F d, Y') }}</p>
+
+		{{ entry.body.getPage(1) }}
+
+		{% for pdf in entry.pdf %}
+	        <a href="/{{pdf.url}}" target="_blank"><button class="btn btn-primary">Download</button></a>
+    	{% endfor %}
+    	{% for pdf in entry.doc %}
+	        <a href="/{{pdf.url}}" target="_blank"><button class="btn btn-primary">Download</button></a>
+    	{% endfor %}
+	<div id="fb-root"></div>
+  <div class="fb-share-button" data-href="{{craft.reqeust.getPath}}" data-layout="button"></div>
+	</article>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+	<div class="jumbotron col-lg-12">
+	{% set params = {
+    	order: 'dateCreated asc',
+    } %}
+
+    {{ craft.comments.form(entry.id, params) }}
+    </div>
+
+{% endblock %}
